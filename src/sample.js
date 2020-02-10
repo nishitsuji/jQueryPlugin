@@ -1,3 +1,4 @@
+
 var defaults = {
 
   url            : $(location).attr('protocol') + '//' + $(location).attr('host'),
@@ -17,12 +18,12 @@ var defaults = {
 $(window).on("load", function(){
   $.ajax({
 
-    type: options.type,
+    type: defaults.type,
     url: url,
-    headers: options.headers,
+    headers: defaults.headers,
     async: false,
-    data: options.parameter,
-    dataType: options.dataType,
+    data: defaults.parameter,
+    dataType: defaults.dataType,
 
     success: function(responseText ){
 
@@ -38,3 +39,4 @@ $(window).on("load", function(){
     }
   });
 });
+
