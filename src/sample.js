@@ -28,7 +28,7 @@ $(window).on("load", function(){
     success: function(responseText ){
 
       if (!$.isEmptyObject( responseText  )) {
-        var out_html = $($.parseHTML(data));
+        var out_html = $($.parseHTML(responseText));
         $('#page').empty().append(out_html.filter('#sub')[0].innerHTML);
       }
     },
