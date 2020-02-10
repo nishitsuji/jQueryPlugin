@@ -1,4 +1,8 @@
 
+/*
+Content-Typeは以下を参考にして、text/html or text/plain　を指定すれば良いはず
+https://qiita.com/AkihiroTakamura/items/b93fbe511465f52bffaa
+*/
 var defaults = {
 
   url            : $(location).attr('protocol') + '//' + $(location).attr('host'),
@@ -6,7 +10,7 @@ var defaults = {
   action         : 'ajax',
   headers        : {
     'X-HTTP-Method-Override': 'GET',
-    'Content-Type': 'html'
+    'Content-Type': 'text/html'
   },
 
   type           : 'get',
@@ -29,12 +33,13 @@ $(window).on("load", function(){
 
       if (!$.isEmptyObject( responseText  )) {
         var out_html = $($.parseHTML(responseText));
+        // ここで書き出したい場所の要素指定して、取り出したい要素を突っ込む
         $('#page').empty().append(out_html.filter('#sub')[0].innerHTML);
       }
     },
     error: function(msg){
 
-      // 特に何もしない
+      // エラーあれば、エラーページなどにリダイレクトする
 
     }
   });
